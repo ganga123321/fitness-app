@@ -22,6 +22,16 @@
       border-radius: 8px;
       border: none;
     }
+    button {
+      margin-top: 10px;
+      padding: 10px;
+      width: 100%;
+      background: #22c55e;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 16px;
+    }
     h2 { color: #22c55e; }
   </style>
 </head>
@@ -32,35 +42,64 @@
 
 <div class="card">
   <h2>Calories</h2>
-  <input placeholder="Calories Consumed">
+  <input id="calories" placeholder="Calories Consumed">
 </div>
 
 <div class="card">
   <h2>Workout</h2>
-  <input placeholder="Workout Type">
+  <input id="workout" placeholder="Workout Type">
 </div>
 
 <div class="card">
   <h2>Steps</h2>
-  <input placeholder="Steps (Goal 10000)">
+  <input id="steps" placeholder="Steps">
 </div>
 
 <div class="card">
   <h2>Water</h2>
-  <input placeholder="Glasses (8)">
+  <input id="water" placeholder="Glasses">
 </div>
 
 <div class="card">
   <h2>Meals</h2>
-  <input placeholder="Breakfast">
-  <input placeholder="Lunch">
-  <input placeholder="Dinner">
+  <input id="breakfast" placeholder="Breakfast">
+  <input id="lunch" placeholder="Lunch">
+  <input id="dinner" placeholder="Dinner">
 </div>
 
 <div class="card">
   <h2>Sleep</h2>
-  <input placeholder="Hours slept">
+  <input id="sleep" placeholder="Hours slept">
 </div>
+
+<button onclick="saveData()">💾 Save Data</button>
+
+<script>
+function saveData() {
+  localStorage.setItem("calories", document.getElementById("calories").value);
+  localStorage.setItem("workout", document.getElementById("workout").value);
+  localStorage.setItem("steps", document.getElementById("steps").value);
+  localStorage.setItem("water", document.getElementById("water").value);
+  localStorage.setItem("breakfast", document.getElementById("breakfast").value);
+  localStorage.setItem("lunch", document.getElementById("lunch").value);
+  localStorage.setItem("dinner", document.getElementById("dinner").value);
+  localStorage.setItem("sleep", document.getElementById("sleep").value);
+
+  alert("Data Saved ✅");
+}
+
+// Load data on page open
+window.onload = function() {
+  document.getElementById("calories").value = localStorage.getItem("calories") || "";
+  document.getElementById("workout").value = localStorage.getItem("workout") || "";
+  document.getElementById("steps").value = localStorage.getItem("steps") || "";
+  document.getElementById("water").value = localStorage.getItem("water") || "";
+  document.getElementById("breakfast").value = localStorage.getItem("breakfast") || "";
+  document.getElementById("lunch").value = localStorage.getItem("lunch") || "";
+  document.getElementById("dinner").value = localStorage.getItem("dinner") || "";
+  document.getElementById("sleep").value = localStorage.getItem("sleep") || "";
+};
+</script>
 
 </body>
 </html>
